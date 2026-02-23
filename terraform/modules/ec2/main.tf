@@ -22,7 +22,7 @@ usermod -aG docker ec2-user
 
 cd /home/ec2-user
 git clone ${var.repo_url}
-cd AWS-ENTERPRISE-3TIER-ARCHITECTURE
+cd aws-enterprise-3tier-architecture
 
 docker build -t 3tier-app .
 docker run -d -p 80:80 \
