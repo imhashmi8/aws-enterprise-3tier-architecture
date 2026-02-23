@@ -1,6 +1,6 @@
-# 🚀 Enterprise 3-Tier Architecture on AWS using Terraform
+# Enterprise 3-Tier Architecture on AWS using Terraform
 
-## 📌 Overview
+## Overview
 
 This repository provisions a production-grade, highly available, and secure 3-tier architecture on AWS using Terraform.
 
@@ -15,7 +15,7 @@ The infrastructure is designed following enterprise best practices:
 
 ---
 
-## 🏗 Architecture Diagram
+## Architecture Diagram
 
 Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet) → RDS (Multi-AZ - Private Subnet)
 
@@ -23,9 +23,9 @@ Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet
 
 ---
 
-## 🧱 Infrastructure Components
+## Infrastructure Components
 
-### 🌐 Networking
+### Networking
 - Custom VPC
 - 2 Public Subnets (ALB)
 - 2 Private App Subnets (EC2)
@@ -34,14 +34,14 @@ Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet
 - NAT Gateway
 - Dedicated Route Tables
 
-### 🚀 Application Layer
+### Application Layer
 - Application Load Balancer
 - Target Group
 - Launch Template
 - Auto Scaling Group
 - EC2 Instances in private subnet
 
-### 🗄 Database Layer
+### Database Layer
 - Amazon RDS (MySQL)
 - Multi-AZ enabled
 - Private subnet deployment
@@ -49,7 +49,7 @@ Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet
 
 ---
 
-## 🔐 Security Design
+## Security Design
 
 - EC2 instances deployed in private subnets
 - RDS isolated in DB subnet group
@@ -60,7 +60,7 @@ Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet
 
 ---
 
-## 🌍 High Availability Strategy
+## High Availability Strategy
 
 - Multi-AZ deployment
 - ALB health checks
@@ -69,7 +69,7 @@ Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet
 
 ---
 
-## 🗄 Terraform Remote Backend
+## Terraform Remote Backend
 
 State is stored remotely in S3 and locked via DynamoDB to prevent concurrent modifications.
 
@@ -80,7 +80,7 @@ Benefits:
 
 ---
 
-## 💰 Cost Optimization Considerations
+## Cost Optimization Considerations
 
 - Single NAT Gateway (can upgrade to HA NAT per AZ)
 - Right-sized RDS instance
@@ -89,21 +89,6 @@ Benefits:
 
 ---
 
-## 🚀 Deployment Instructions
-
-### 1️⃣ Initialize
-terraform init
-
-### 2️⃣ Validate
-terraform validate
-
-### 3️⃣ Plan
-terraform plan
-
-### 4️⃣ Apply
-terraform apply
-
----
 
 ## Repository Structure
 
