@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Production 3-Tier App</title>
+    <meta charset="UTF-8">
+    <title>AWS Enterprise 3-Tier Architecture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .db-time {
+            margin: 20px 0;
+            padding: 12px;
+            background: #f4f6fa;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
 </head>
 <body>
-    <h1>🚀 Production 3-Tier Architecture Running!</h1>
-    <p>Database Time: {{ db_time }}</p>
+
+    <div class="card">
+        <h1>AWS 3-Tier Architecture</h1>
+        <p>Dockerized Production Application</p>
+
+        <div class="badge">Application Status: Running</div>
+
+        <div class="db-time">
+            Database Time: {{ db_time }}
+        </div>
+
+        <footer>
+            Designed & Engineered by <strong>Md Qamar Hashmi</strong><br>
+            DevOps | SRE | Cloud Engineer
+        </footer>
+    </div>
+
 </body>
 </html>
