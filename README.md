@@ -1,62 +1,107 @@
-# AWS Enterprise 3-Tier Architecture  
-### Terraform | Docker | Auto Scaling | Multi-AZ | Dev/Prod Environments  
+# 🚀 Enterprise 3-Tier Architecture on AWS using Terraform
 
-Designed & Engineered by **Md Qamar Hashmi**  
-DevOps | SRE | Cloud Engineer  
+## 📌 Overview
 
----
+This repository provisions a production-grade, highly available, and secure 3-tier architecture on AWS using Terraform.
 
-## Project Overview
+The infrastructure is designed following enterprise best practices:
 
-This project demonstrates a **production-grade 3-tier architecture on AWS** using:
-
-- Modular Terraform
-- Environment separation (dev & prod)
-- Dockerized application deployment
-- Auto Scaling Group
-- Application Load Balancer
-- Multi-AZ RDS (Production)
-- Secure VPC networking
-
-The goal is to simulate a **real-world enterprise infrastructure setup** following best practices in scalability, high availability, and security.
+- Modular Terraform architecture
+- Remote state management with locking
+- Multi-AZ high availability
+- Secure network segmentation
+- Auto Scaling for resilience
+- Least privilege IAM model
 
 ---
 
-## Architecture Diagram
+## 🏗 Architecture Diagram
+
+Users → Application Load Balancer → Auto Scaling Group (EC2 - Private Subnet) → RDS (Multi-AZ - Private Subnet)
 
 ![AWS 3-Tier Architecture](./assets/architecture.png)
 
-
 ---
 
-## Architecture Components
+## 🧱 Infrastructure Components
 
-### Web Tier
-- Application Load Balancer (ALB)
-- Public Subnets (Multi-AZ)
+### 🌐 Networking
+- Custom VPC
+- 2 Public Subnets (ALB)
+- 2 Private App Subnets (EC2)
+- 2 Private DB Subnets (RDS)
+- Internet Gateway
+- NAT Gateway
+- Dedicated Route Tables
 
-### Application Tier
-- EC2 Instances (Private Subnets)
-- Docker-based Flask App
+### 🚀 Application Layer
+- Application Load Balancer
+- Target Group
+- Launch Template
 - Auto Scaling Group
-- Launch Templates
-- User Data provisioning
+- EC2 Instances in private subnet
 
-### Database Tier
+### 🗄 Database Layer
 - Amazon RDS (MySQL)
-- Multi-AZ in Production
-- DB Subnet Group
-- Private Access Only
+- Multi-AZ enabled
+- Private subnet deployment
+- No public accessibility
 
 ---
 
-## Security Design
+## 🔐 Security Design
 
-- Private EC2 instances (no public IPs)
-- Security group isolation per tier
-- ALB exposed publicly (HTTP)
-- RDS accessible only from application tier
-- Environment-based tagging
+- EC2 instances deployed in private subnets
+- RDS isolated in DB subnet group
+- IAM roles attached to EC2 (no hardcoded credentials)
+- Security groups follow least privilege principle
+- No public SSH access
+- NAT used for controlled outbound traffic
+
+---
+
+## 🌍 High Availability Strategy
+
+- Multi-AZ deployment
+- ALB health checks
+- Auto Scaling policies based on CPU utilization
+- RDS automatic failover
+
+---
+
+## 🗄 Terraform Remote Backend
+
+State is stored remotely in S3 and locked via DynamoDB to prevent concurrent modifications.
+
+Benefits:
+- Team collaboration safety
+- State corruption prevention
+- Versioned state storage
+
+---
+
+## 💰 Cost Optimization Considerations
+
+- Single NAT Gateway (can upgrade to HA NAT per AZ)
+- Right-sized RDS instance
+- Configurable Auto Scaling limits
+- Environment separation (dev vs prod)
+
+---
+
+## 🚀 Deployment Instructions
+
+### 1️⃣ Initialize
+terraform init
+
+### 2️⃣ Validate
+terraform validate
+
+### 3️⃣ Plan
+terraform plan
+
+### 4️⃣ Apply
+terraform apply
 
 ---
 
