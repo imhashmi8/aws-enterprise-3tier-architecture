@@ -78,6 +78,19 @@ Benefits:
 - State corruption prevention
 - Versioned state storage
 
+## 🏗 Backend Bootstrap Process
+
+The backend infrastructure (S3 + DynamoDB) is provisioned separately using the `bootstrap/` directory.
+
+Steps:
+
+1. Navigate to `bootstrap/`
+2. Run `terraform apply`
+3. Configure backend in `environments/*/backend.tf`
+4. Run `terraform init -reconfigure`
+
+This separation ensures proper state lifecycle management.
+
 ---
 
 ## Cost Optimization Considerations
@@ -191,7 +204,7 @@ Open the ALB DNS in your browser.
 
 ---
 
-## 💰 Cost Consideration
+## Cost Consideration
 
 Resources created:
 - EC2 instances
